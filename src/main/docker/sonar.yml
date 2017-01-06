@@ -1,0 +1,8 @@
+version: '2'
+services:
+    ng4-sonar:
+        container_name: ng4-sonar
+        image: sonarqube:6.1-alpine
+        ports:
+            - 9000:9000
+            - 9092:9092
