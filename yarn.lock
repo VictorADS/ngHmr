@@ -51,6 +51,10 @@
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.1.tgz#4eaa829b450be34f0029796b6c3b99e27d3d5740"
 
+"@angular/router@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.1.tgz#079c8580943547a710f292026ac86a08d336a49d"
+
 "@angular/tsc-wrapped@0.5.0", "@angular/tsc-wrapped@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@angular/tsc-wrapped/-/tsc-wrapped-0.5.0.tgz#e50f81af02c6817dcaba22032e49ba8060d628b4"
