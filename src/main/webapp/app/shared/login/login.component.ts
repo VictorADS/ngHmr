@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { StateService } from 'ui-router-ng2';
 import { JhiLanguageService, EventManager } from 'ng-jhipster';
 
 import { LoginService } from '../login/login.service';
@@ -18,6 +19,7 @@ export class JhiLoginModalComponent implements OnInit, AfterViewInit {
 
     constructor(
         private eventManager: EventManager,
+        private $state: StateService,
         private languageService: JhiLanguageService,
         private loginService: LoginService,
         private stateStorageService: StateStorageService,
@@ -54,6 +56,11 @@ export class JhiLoginModalComponent implements OnInit, AfterViewInit {
         }).then(() => {
             this.authenticationError = false;
             this.activeModal.dismiss('login success');
+            if (this.$state.current.name === 'register' || this.$state.current.name === 'activate' ||
+                this.$state.current.name === 'finishReset' || this.$state.current.name === 'requestReset') {
+                this.$state.go('home');
+            }
+
             this.eventManager.broadcast({
                 name: 'authenticationSuccess',
                 content: 'Sending Authentication Success'
@@ -61,6 +68,11 @@ export class JhiLoginModalComponent implements OnInit, AfterViewInit {
 
             // previousState was set in the authExpiredInterceptor before being redirected to login modal.
             // since login is succesful, go to stored previousState and clear previousState
+            let previousState = this.stateStorageService.getPreviousState();
+            if (previousState) {
+                this.stateStorageService.resetPreviousState();
+                this.$state.go(previousState.name, previousState.params);
+            }
         }).catch(() => {
             this.authenticationError = true;
         });
@@ -68,9 +80,11 @@ export class JhiLoginModalComponent implements OnInit, AfterViewInit {
 
     register () {
         this.activeModal.dismiss('to state register');
+        this.$state.go('register');
     }
 
     requestResetPassword () {
         this.activeModal.dismiss('to state requestReset');
+        this.$state.go('requestReset');
     }
 }

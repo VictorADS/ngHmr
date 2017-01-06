@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from 'ui-router-ng2';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
 
@@ -21,6 +22,7 @@ export class NavbarComponent implements OnInit {
     version: string;
 
     constructor(
+        private $state: StateService,
         private loginService: LoginService,
         private languageHelper: JhiLanguageHelper,
         private languageService: JhiLanguageService,
@@ -62,6 +64,7 @@ export class NavbarComponent implements OnInit {
     logout() {
         this.collapseNavbar();
         this.loginService.logout();
+        this.$state.go('home');
     }
 
     toggleNavbar() {

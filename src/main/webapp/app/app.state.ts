@@ -1,10 +1,23 @@
-import { Routes } from '@angular/router'
-import {HomeComponent} from "./home/home.component";
-import {ErrorComponent} from "./layouts/error/error.component";
-import {NavbarComponent} from "./layouts/navbar/navbar.component";
-export const ROUTES: Routes = [
-    { path: '',         component: HomeComponent },
-    { path: 'navbar',     component:  NavbarComponent},
-    { path: '**',       component: ErrorComponent },
-    ]
+import { JhiLanguageService } from 'ng-jhipster';
+import { NavbarComponent } from './layouts';
+import { AuthService } from './shared';
 
+export const appState = {
+    name: 'app',
+    abstract: true,
+    views: {
+        'navbar@': { component: NavbarComponent }
+    },
+    resolve: [
+        {
+            token: 'authorize',
+            deps: [AuthService],
+            resolveFn: (auth) => auth.authorize()
+        },
+        {
+            token: 'translate',
+            deps: [JhiLanguageService],
+            resolveFn: (languageService) => languageService.setLocations([])
+        }
+    ]
+};

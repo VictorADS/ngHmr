@@ -20,13 +20,14 @@
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
-    "clientFramework": "angular2",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "enableTranslation": true,
     "nativeLanguage": "en",
     "languages": [
       "en"
-    ]
+    ],
+    "serviceDiscoveryType": false,
+    "clientFramework": "angular2"
   }
 }

@@ -1,16 +1,6 @@
-<nav>
-    <a [routerLink]=" [''] ">
-        <span>Home</span>
-    </a>
-
-    <a [routerLink]=" ['./navbar'] ">
-        <span> Go to navbar</span>
-    </a>
-
-</nav>
-<p> Hello this is a test</p>
-    <router-outlet></router-outlet>
-
-<footer>
-    <p>This is a footer here</p>
-</footer>
+<jhi-page-ribbon></jhi-page-ribbon>
+<div ui-view="navbar"></div>
+<div class="container-fluid">
+    <div class="card" ui-view="content"></div>
+    <jhi-footer></jhi-footer>
+</div>

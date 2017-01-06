@@ -4,7 +4,4 @@ import { Component } from '@angular/core';
     selector: 'jhi-main',
     templateUrl: './main.component.html'
 })
-export class JhiMainComponent {
-    name = "xD";
-    url= "Je suis un lol bb";
-}
+export class JhiMainComponent {}

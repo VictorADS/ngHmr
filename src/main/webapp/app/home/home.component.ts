@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from 'ui-router-ng2';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager } from 'ng-jhipster';
 
@@ -14,16 +15,16 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private principal: Principal,
+        private $state: StateService,
         private loginModalService: LoginModalService,
         private eventManager: EventManager
     ) {}
 
     ngOnInit() {
-        /*this.principal.identity().then((account) => {
+        this.principal.identity().then((account) => {
             this.account = account;
         });
-        this.registerAuthenticationSuccess();*/
-        console.log("Init de home");
+        this.registerAuthenticationSuccess();
     }
 
     registerAuthenticationSuccess() {

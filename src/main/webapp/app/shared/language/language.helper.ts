@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { TranslateService, TranslationChangeEvent, LangChangeEvent } from 'ng2-translate/ng2-translate';
+import { StateService } from 'ui-router-ng2';
 
 import { LANGUAGES } from './language.constants';
 
 @Injectable()
 export class JhiLanguageHelper {
 
-    constructor (private translateService: TranslateService) {
+    constructor (private translateService: TranslateService, private $state: StateService) {
         this.init();
     }
 
@@ -32,6 +33,9 @@ export class JhiLanguageHelper {
      * 3. 'global.title'
      */
     updateTitle(titleKey?: string) {
+        if (!titleKey && this.$state.current.data && this.$state.current.data.pageTitle) {
+            titleKey = this.$state.current.data.pageTitle;
+        }
         this.translateService.get(titleKey || 'global.title').subscribe(title => {
             window.document.title = title;
         });

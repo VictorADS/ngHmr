@@ -5,15 +5,6 @@ import { Ng4AppModule } from './app.module';
 ProdConfig();
 if(module['hot']){
     module['hot'].accept();
+    console.log("J e fais quelque chose");
 }
-export function main() {
-    return platformBrowserDynamic().bootstrapModule(Ng4AppModule);
-}
-
-if (document.readyState === 'complete') {
-    main();
-}
-else {
-    document.addEventListener('DOMContentLoaded', main);
-}
-
+platformBrowserDynamic().bootstrapModule(Ng4AppModule);

@@ -15,21 +15,16 @@ module.exports = webpackMerge(commonConfig({env: ENV}), {
                 '/v2/api-docs',
                '/h2-console'
             ],
-            target: 'http://127.0.0.1:8070',
+            target: 'http://127.0.0.1:8080',
             secure: false
-        }],
-        stats: {
-            warnings: false,
-            assets: false,
-            chunks: false
-        }
+        }]
     },
     output: {
         path: '/target/www',
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js'
     },
-/*    module: {
+    module: {
         rules: [{
             test: /\.ts$/,
             loaders: [
@@ -37,7 +32,7 @@ module.exports = webpackMerge(commonConfig({env: ENV}), {
             ],
             exclude: ['node_modules', /reflect-metadata\/Reflect\.ts/]
         }]
-    },*/
+    },
     plugins: [
         new BrowserSyncPlugin({
             host: 'localhost',
@@ -48,6 +43,6 @@ module.exports = webpackMerge(commonConfig({env: ENV}), {
         }),
         new ExtractTextPlugin('styles.css'),
         new webpack.NoErrorsPlugin(),
-        new webpack.NamedModulesPlugin(),
+        new webpack.NamedModulesPlugin()
     ]
 });
